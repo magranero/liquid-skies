@@ -1,6 +1,6 @@
 # Liquid Skies · web
 
-Web estática del movimiento Liquid Skies (techno & remember, Madrid).
+Web estática del movimiento Liquid Skies (techno & remember, nómada: cada edición en un sitio).
 Desplegada en Netlify: https://liquid-skies.netlify.app
 
 ## Cambiar las plazas libres

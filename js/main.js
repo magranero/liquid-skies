@@ -107,6 +107,7 @@ function initMusic() {
         const src = ctx.createMediaElementSource(audio);
         analyser = ctx.createAnalyser(); analyser.fftSize = 256; bins = new Uint8Array(analyser.frequencyBinCount);
         src.connect(analyser); analyser.connect(ctx.destination);
+        if (ctx.state === "suspended") ctx.resume();
       } catch (_) { /* sin analizador: suena igual */ }
     }
     audio.play().catch(() => {});
@@ -118,8 +119,13 @@ function initMusic() {
     else { audio.pause(); try { localStorage.setItem("ls-muted", "1"); } catch (_) {} }
   });
   let muted = false; try { muted = localStorage.getItem("ls-muted") === "1"; } catch (_) {}
-  const first = () => { removeEventListener("pointerdown", first); removeEventListener("keydown", first); if (!muted && audio.paused) play(); };
+  const first = () => { removeEventListener("pointerdown", first); removeEventListener("keydown", first); if (!muted || !audio.paused) play(); };
   addEventListener("pointerdown", first); addEventListener("keydown", first);
+  // intento de autoplay: algunos navegadores lo permiten; si no, suena al primer toque
+  if (!muted) {
+    audio.preload = "auto";
+    audio.play().catch(() => {}); // el analizador (cielo reactivo) se engancha en el primer toque
+  }
 }
 
 /* ---------------- Datos ---------------- */
