@@ -1,0 +1,21 @@
+{
+  "eventos": [
+    {
+      "id": "v1",
+      "nombre": "Liquid Skies v1",
+      "subtitulo": "Genesis",
+      "inicio": "2026-11-21T20:00:00+01:00",
+      "fin": "2026-11-22T02:00:00+01:00",
+      "fecha_texto": "Sábado 21 de noviembre",
+      "hora_texto": "Desde las 20:00",
+      "lugar": "Island Lounge",
+      "direccion": "C. de Ocaña, 112, Latina, 28047 Madrid",
+      "mapa": "https://www.google.com/maps/search/?api=1&query=Island+Lounge+Calle+de+Oca%C3%B1a+112+28047+Madrid",
+      "precio": "20€ barra libre",
+      "plazas_libres": 100,
+      "url": "/eventos/v1/",
+      "imagen": "/img/venue/island_01.jpg",
+      "estado": "abierto"
+    }
+  ]
+}

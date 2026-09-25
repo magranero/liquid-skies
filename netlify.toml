@@ -1,0 +1,18 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.ics"
+  [headers.values]
+    Content-Type = "text/calendar; charset=utf-8"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

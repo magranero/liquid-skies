@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Liquid Skies//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:liquid-skies-v1@liquid-skies.netlify.app
+DTSTAMP:20260925T120000Z
+DTSTART:20261121T190000Z
+DTEND:20261122T010000Z
+SUMMARY:Liquid Skies v1 · Techno & Remember
+LOCATION:Island Lounge\, C. de Ocaña 112\, 28047 Madrid
+DESCRIPTION:Barra libre 20€. Despegue ~21:15. https://liquid-skies.netlify.app/eventos/v1/
+URL:https://liquid-skies.netlify.app/eventos/v1/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Mañana despega Liquid Skies 🚀
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Liquid Skies · Techno & Remember · Madrid</title>
+<meta name="description" content="Liquid Skies: un viaje fuera de este mundo. Fiestas de techno y remember en Madrid para los que bailaron antes de que existieran los stories.">
+<link rel="canonical" href="https://liquid-skies.netlify.app/">
+<meta name="theme-color" content="#04050c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Liquid Skies">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://liquid-skies.netlify.app/">
+<meta property="og:title" content="Liquid Skies · Un viaje fuera de este mundo">
+<meta property="og:description" content="Techno & remember en Madrid. Próximo despegue: sábado 21 de noviembre en Island Lounge.">
+<meta property="og:image" content="https://liquid-skies.netlify.app/img/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://liquid-skies.netlify.app/img/og-home.jpg">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-share="🌌 Liquid Skies v1 · Techno & Remember · Sáb 21 Nov, Island Lounge (Latina) desde las 20:00. Barra libre 20€. ¿Te subes a la nave?">
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="logo" href="/">LIQUID<span>·</span>SKIES</a>
+  <ul>
+    <li><a href="#manifiesto">Manifiesto</a></li>
+    <li><a href="#viaje">El viaje</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+  </ul>
+  <a class="pill" href="/eventos/v1/"><i class="dot"></i>v1 · 21.11</a>
+</nav>
+
+<header class="hero">
+  <div>
+    <p class="eyebrow">Techno · Remember · Madrid</p>
+    <h1>Liquid<span class="l2">Skies</span></h1>
+    <p class="tag">Un viaje fuera de este mundo.<br><b>Para los que bailaron antes de que existieran los stories.</b></p>
+    <div class="hero-card">
+      <span><span class="k">Próximo despegue</span><br><span class="v" id="count-mini">—</span></span>
+      <span><span class="k">Plazas libres</span><br><span class="v" data-seats-num>—</span></span>
+    </div>
+    <div class="btns">
+      <a class="btn primary" href="/eventos/v1/">Subir a la v1 →</a>
+      <a class="btn wa" data-wa target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Pásalo por WhatsApp</a>
+    </div>
+  </div>
+  <span class="scroll-hint">Baja ↓</span>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Sin móviles</span><span>136 BPM</span><span>Remember</span><span>Techno</span><span>Barra libre</span><span>Despegue 21.11</span><span>Madrid</span><span>Liquid Skies</span>
+  <span>Sin móviles</span><span>136 BPM</span><span>Remember</span><span>Techno</span><span>Barra libre</span><span>Despegue 21.11</span><span>Madrid</span><span>Liquid Skies</span>
+</div></div>
+
+<section id="manifiesto">
+  <div class="wrap">
+    <p class="eyebrow rv">Manifiesto</p>
+    <h2 class="rv">Seis leyes del <span class="grad">planeta</span> Liquid Skies</h2>
+    <p class="lead rv">No somos una promotora. Somos una tripulación de amigos que echaba de menos sudar la camiseta sin mirar el reloj. Estas son las reglas que se repiten en cada viaje.</p>
+    <div class="rules">
+      <article class="rule rv">
+        <div class="glow" style="background:var(--pink)"></div>
+        <span class="n">01</span>
+        <h3>La música destruye lo malo</h3>
+        <p>Los atascos, las reuniones que podían ser un email y el grupo de WhatsApp del cole se quedan en la puerta. Dentro solo hay bombo.</p>
+      </article>
+      <article class="rule rv">
+        <div class="glow" style="background:var(--cyan)"></div>
+        <div class="phone" aria-hidden="true"><i class="sticker"></i></div>
+        <span class="n">02</span>
+        <h3>Pegatina en la cámara</h3>
+        <p>Al entrar te tapamos la cámara del móvil. Lo que pasa en la pista se queda en la pista… y en tu amígdala. <em>(Toca la tarjeta.)</em></p>
+      </article>
+      <article class="rule rv">
+        <div class="glow" style="background:var(--violet)"></div>
+        <span class="n">03</span>
+        <h3>Remember, no museo</h3>
+        <p>Los clásicos que te hicieron como eres, cosidos con techno de ahora. Nostalgia sí; naftalina, no.</p>
+      </article>
+      <article class="rule rv">
+        <div class="glow" style="background:var(--blue)"></div>
+        <span class="n">04</span>
+        <h3>Esto es un viaje</h3>
+        <p>Cada edición tiene recepción, cuenta atrás, despegue y viaje. Si la nave lo pide, agujero de gusano. No te lo pierdas desde la barra.</p>
+      </article>
+      <article class="rule rv">
+        <div class="glow" style="background:var(--cyan)"></div>
+        <span class="n">05</span>
+        <h3>Tripulación pequeña</h3>
+        <p>Sin registros ni formularios. Publicamos las plazas libres y cuando llegan a cero, la escotilla se cierra.</p>
+      </article>
+      <article class="rule rv">
+        <div class="glow" style="background:var(--pink)"></div>
+        <span class="n">06</span>
+        <h3>Barra libre, cabeza libre</h3>
+        <p>Un precio, cero cuentas. Tu único trabajo esa noche es bailar y cuidar de la tripulación de al lado.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">De dónde venimos</p>
+    <h2 class="rv">Realidad → Amígdala → <span class="grad">Oportunidad</span></h2>
+    <div class="arc rv">
+      <div class="a1">
+        <span class="num">01</span>
+        <h3>Realidad</h3>
+        <p>Tienes 40 y tantos. La semana es un bucle: despertador, atasco, pantalla, repetir.</p>
+        <ul><li>Reuniones</li><li>Atascos</li><li>Garitos con móviles</li><li>Hipoteca</li></ul>
+      </div>
+      <div class="a2">
+        <span class="num">02</span>
+        <h3>Amígdala</h3>
+        <p>Pero tu cerebro guarda otra cosa: noches sin mapa, coches con cinta de cassette, amigos sin cobertura.</p>
+        <ul><li>Ruta libre</li><li>Coche libre</li><li>Sin móviles</li><li>Amanecer</li></ul>
+      </div>
+      <div class="a3">
+        <span class="num">03</span>
+        <h3>Oportunidad</h3>
+        <p>Liquid Skies es la puerta de vuelta a esa época de libertad. Con mejor sonido y la misma gente.</p>
+        <ul><li>Época libertad</li><li>Liquid Skies</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="viaje">
+  <div class="wrap">
+    <p class="eyebrow rv">El ritual</p>
+    <h2 class="rv">Así es un <span class="grad">viaje</span></h2>
+    <p class="lead rv">Cinco fases. Siempre las mismas. Cada edición cambia el destino.</p>
+    <div class="trip">
+      <div class="stage rv"><div class="ic">🛸</div><div><h3>Recepción</h3><p>Te explicamos el viaje, pegatina al móvil y te decimos la hora del despegue. Remember de calentamiento.</p></div><span class="t">1 h</span></div>
+      <div class="stage rv"><div class="ic">⏳</div><div><h3>Preparación</h3><p>Cuenta atrás en pantalla. Las luces bajan, el bombo sube. Vamos poniendo caliente al personal.</p></div><span class="t">15 min</span></div>
+      <div class="stage boom rv"><div class="ic">🚀</div><div><h3>Despegue</h3><p>Suena el himno <em>Liquid Skies</em>. Motores, humo y fuera andamios. A partir de aquí, no hay vuelta atrás.</p></div><span class="t">T-0</span></div>
+      <div class="stage rv"><div class="ic">🪐</div><div><h3>Viaje</h3><p>La Luna, Saturno, Marte. Techno y remember elegidos según veamos a la tripulación.</p></div><span class="t">4 h</span></div>
+      <div class="stage rv"><div class="ic">🌀</div><div><h3>Agujero de gusano</h3><p>En algún momento, sin avisar, se abre. No podemos contarte más.</p></div><span class="t">???</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap">
+    <blockquote class="rv">“Follow me to the <span class="grad">planet of liquid skies</span>”</blockquote>
+    <cite class="rv">— la voz del planeta</cite>
+  </div>
+</section>
+
+<section id="eventos">
+  <div class="wrap">
+    <p class="eyebrow rv">Eventos</p>
+    <h2 class="rv">Próximos <span class="grad">despegues</span></h2>
+    <div class="events" id="eventos-list"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">LIQUID<span>·</span>SKIES</span>
+    <span>Madrid · Hecho por amigos, para amigos · Sin móviles en la pista</span>
+  </div>
+</footer>
+
+<script src="/js/main.js" type="module"></script>
+</body>
+</html>
