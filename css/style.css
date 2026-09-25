@@ -232,3 +232,20 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .rv { opacity: 1; transform: none; }
   .marquee .track, .grain, .dot { animation: none; }
 }
+
+/* ---------- Música ---------- */
+.music {
+  position: fixed; right: 16px; bottom: 16px; z-index: 60; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px 12px 14px; border-radius: 99px;
+  border: 1px solid rgba(60,240,255,.5); background: rgba(4,5,12,.75); backdrop-filter: blur(10px);
+  color: var(--ink); font: 600 14px var(--body); box-shadow: 0 10px 30px -10px rgba(60,240,255,.5);
+  animation: nudge 2.4s ease-in-out infinite;
+}
+.music.on { animation: none; }
+.music .eq { display: inline-flex; align-items: flex-end; gap: 3px; height: 16px; }
+.music .eq i { width: 3px; height: 30%; background: var(--cyan); border-radius: 2px; }
+.music.on .eq i { animation: eq .9s ease-in-out infinite; }
+.music.on .eq i:nth-child(2) { animation-delay: -.3s; } .music.on .eq i:nth-child(3) { animation-delay: -.6s; } .music.on .eq i:nth-child(4) { animation-delay: -.15s; }
+@keyframes eq { 0%,100% { height: 25%; } 50% { height: 100%; } }
+@keyframes nudge { 50% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .music, .music.on .eq i { animation: none; } }

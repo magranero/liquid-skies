@@ -13,7 +13,7 @@ function initSky() {
   if (!gl) return;
   const vs = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
   const fs = `precision highp float;
-uniform vec2 r;uniform float t;uniform vec2 m;uniform float s;
+uniform vec2 r;uniform float t;uniform vec2 m;uniform float s;uniform float a;
 float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
  return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
@@ -21,7 +21,7 @@ float fbm(vec2 p){float v=0.,a=.5;mat2 R=mat2(.8,.6,-.6,.8);for(int i=0;i<6;i++)
 void main(){
  vec2 uv=gl_FragCoord.xy/r;vec2 p=(gl_FragCoord.xy-.5*r)/min(r.x,r.y);
  p.y+=s*.35;
- float T=t*.045;
+ float T=t*.045+a*.02;
  vec2 q=vec2(fbm(p*1.6+T),fbm(p*1.6-T+4.2));
  vec2 w=vec2(fbm(p*1.3+2.5*q+vec2(1.7,9.2)+T*1.3+m*.25),fbm(p*1.3+2.5*q+vec2(8.3,2.8)-T));
  float f=fbm(p*1.2+3.*w);
@@ -35,7 +35,8 @@ void main(){
  col=mix(col,cyan,pow(smoothstep(.55,1.,f),3.)*.9);
  col+=pink*pow(smoothstep(.7,1.,w.x*f*1.6),4.)*.35;
  float caustic=pow(abs(sin((f+w.y)*18.+t*.4)),24.)*smoothstep(.45,.8,f);
- col+=cyan*caustic*.35;
+ col+=cyan*caustic*(.35+a*1.2);
+ col*=1.+a*.35;
  col*=.55+.6*smoothstep(-.2,1.1,uv.y);
  col*=1.-.55*length((uv-.5)*vec2(1.1,1.4));
  gl_FragColor=vec4(col,1.);
@@ -53,7 +54,7 @@ void main(){
   gl.enableVertexAttribArray(loc);
   gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
   const U = (k) => gl.getUniformLocation(pr, k);
-  const ur = U("r"), ut = U("t"), um = U("m"), us = U("s");
+  const ur = U("r"), ut = U("t"), um = U("m"), us = U("s"), ua = U("a");
   const mouse = [0, 0], target = [0, 0];
   addEventListener("pointermove", (e) => { target[0] = e.clientX / innerWidth - .5; target[1] = e.clientY / innerHeight - .5; });
   const scale = Math.min(devicePixelRatio, 1.5) * (innerWidth < 700 ? .6 : .75);
@@ -67,11 +68,58 @@ void main(){
     gl.uniform1f(ut, still ? 20 : (now - t0) / 1000);
     gl.uniform2f(um, mouse[0], mouse[1]);
     gl.uniform1f(us, scrollY / innerHeight);
+    gl.uniform1f(ua, level());
     gl.drawArrays(gl.TRIANGLES, 0, 3);
     if (!still) requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);
   if (still) addEventListener("scroll", () => requestAnimationFrame(frame), { passive: true });
+}
+
+/* ---------------- Música ---------------- */
+// Los navegadores no permiten sonar sin interacción: arranca con el primer toque
+// en la página (salvo que el usuario la haya pausado antes) o con el botón.
+const audio = new Audio("/audio/liquid-skies.mp3");
+audio.loop = true; audio.preload = "none";
+let analyser, bins, smooth = 0;
+function level() {
+  if (!analyser || audio.paused) { smooth *= .95; return smooth; }
+  analyser.getByteFrequencyData(bins);
+  let v = 0; for (let i = 1; i < 12; i++) v += bins[i];
+  v = Math.max(0, v / (11 * 255) - .35) / .65;
+  smooth += (v - smooth) * (v > smooth ? .5 : .12);
+  return smooth;
+}
+function initMusic() {
+  const btn = document.createElement("button");
+  btn.className = "music"; btn.setAttribute("aria-label", "Reproducir la canción Liquid Skies");
+  btn.innerHTML = '<span class="eq"><i></i><i></i><i></i><i></i></span><span class="lbl">Dale al play</span>';
+  document.body.appendChild(btn);
+  const ui = () => {
+    btn.classList.toggle("on", !audio.paused);
+    btn.querySelector(".lbl").textContent = audio.paused ? "Dale al play" : "Liquid Skies";
+    btn.setAttribute("aria-label", audio.paused ? "Reproducir la canción Liquid Skies" : "Pausar la música");
+  };
+  const play = () => {
+    if (!analyser) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const src = ctx.createMediaElementSource(audio);
+        analyser = ctx.createAnalyser(); analyser.fftSize = 256; bins = new Uint8Array(analyser.frequencyBinCount);
+        src.connect(analyser); analyser.connect(ctx.destination);
+      } catch (_) { /* sin analizador: suena igual */ }
+    }
+    audio.play().catch(() => {});
+  };
+  audio.addEventListener("play", ui); audio.addEventListener("pause", ui);
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (audio.paused) { play(); try { localStorage.removeItem("ls-muted"); } catch (_) {} }
+    else { audio.pause(); try { localStorage.setItem("ls-muted", "1"); } catch (_) {} }
+  });
+  let muted = false; try { muted = localStorage.getItem("ls-muted") === "1"; } catch (_) {}
+  const first = () => { removeEventListener("pointerdown", first); removeEventListener("keydown", first); if (!muted && audio.paused) play(); };
+  addEventListener("pointerdown", first); addEventListener("keydown", first);
 }
 
 /* ---------------- Datos ---------------- */
@@ -172,6 +220,7 @@ function observe() {
 
 /* ---------------- Arranque ---------------- */
 initSky();
+initMusic();
 initShare();
 observe();
 document.querySelectorAll(".rule").forEach((r) => r.addEventListener("click", () => r.classList.toggle("stuck")));
