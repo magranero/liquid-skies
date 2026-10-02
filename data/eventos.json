@@ -15,7 +15,13 @@
       "plazas_libres": 97,
       "url": "/eventos/v1/",
       "imagen": "/img/venue/island_01.jpg",
-      "estado": "abierto"
+      "estado": "abierto",
+      "headliner": {
+        "nombre": "DJ Edgar",
+        "instagram": "edgar.remember",
+        "web": "https://djedgar.com",
+        "estilos": "Remember · House · Trance · Techno"
+      }
     }
   ]
 }

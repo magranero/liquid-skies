@@ -162,6 +162,7 @@ function renderEventos(list) {
       <div class="info">
         <div class="date grad">${fmtDay(d)}.${String(d.getMonth() + 1).padStart(2, "0")}</div>
         <h3>${e.nombre}${e.subtitulo ? " · " + e.subtitulo : ""}</h3>
+        ${e.headliner ? `<div class="meta">🎧 Headliner: <b style="color:var(--ink)">${e.headliner.nombre}</b></div>` : ""}
         <div class="meta">${e.fecha_texto} · ${e.hora_texto}<br>${e.lugar} — ${e.direccion}<br>${e.precio}</div>
         <div class="cta">${past ? "" : seatsHTML(e.plazas_libres)}<span class="btn primary">Ver evento →</span></div>
       </div>
