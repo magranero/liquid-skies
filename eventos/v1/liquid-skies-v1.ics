@@ -9,7 +9,7 @@ DTSTART:20261121T190000Z
 DTEND:20261122T010000Z
 SUMMARY:Liquid Skies v1 · Techno & Remember
 LOCATION:Island Lounge\, C. de Ocaña 112\, 28047 Madrid
-DESCRIPTION:Barra libre 20€. Despegue ~21:15. https://liquid-skies.netlify.app/eventos/v1/
+DESCRIPTION:Barra libre 25€. Despegue ~21:15. https://liquid-skies.netlify.app/eventos/v1/
 URL:https://liquid-skies.netlify.app/eventos/v1/
 BEGIN:VALARM
 TRIGGER:-P1D
